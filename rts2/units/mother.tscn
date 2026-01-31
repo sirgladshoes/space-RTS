@@ -1,0 +1,182 @@
+[gd_scene load_steps=19 format=3 uid="uid://dtaxi8qyupagt"]
+
+[ext_resource type="Script" path="res://units/mother.gd" id="1_cjyn6"]
+[ext_resource type="Texture2D" uid="uid://d1bpfc2lwc5vv" path="res://drive-download-20240529T170724Z-001/nodes/Mother.png" id="2_muok8"]
+[ext_resource type="Script" path="res://units/actions/make_ship.gd" id="3_jkv13"]
+[ext_resource type="PackedScene" uid="uid://bt56whqsog3qh" path="res://components/auto_turret.tscn" id="4_0h2ec"]
+[ext_resource type="Texture2D" uid="uid://bgxds5xnu0nit" path="res://art/mini guy.png" id="4_53ofa"]
+[ext_resource type="PackedScene" uid="uid://c4tw3qy2afq5c" path="res://units/controllable_units/ship_3.tscn" id="4_tp4yi"]
+[ext_resource type="PackedScene" uid="uid://bvb2wuhmhubvr" path="res://units/controllable_units/mining_ship.tscn" id="5_itdhv"]
+[ext_resource type="PackedScene" uid="uid://cqmbhlohj66b3" path="res://projectiles/projectile.tscn" id="5_nd6ii"]
+[ext_resource type="Texture2D" uid="uid://b1m24mq8ig8gk" path="res://art/unnamed.png" id="5_sjh7l"]
+[ext_resource type="Texture2D" uid="uid://dcuaa3pmqspee" path="res://art/gun.png" id="6_vqjx5"]
+[ext_resource type="Texture2D" uid="uid://dlx6nohsxns4q" path="res://drive-download-20240529T170724Z-001/ships/freighter.png" id="7_ntkr7"]
+[ext_resource type="Texture2D" uid="uid://bm6yc636k6nnu" path="res://drive-download-20240529T170724Z-001/ships/RockHopper.png" id="9_5x75u"]
+[ext_resource type="PackedScene" uid="uid://dkdts0mmh737m" path="res://units/controllable_units/ship_4.tscn" id="10_vscu7"]
+[ext_resource type="Texture2D" uid="uid://d2y2w4msko607" path="res://drive-download-20240529T170724Z-001/ships/destroyer.png" id="11_m6c1n"]
+
+[sub_resource type="Animation" id="Animation_72fh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sn48v"]
+resource_name = "shoot"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0w3fg"]
+_data = {
+"RESET": SubResource("Animation_72fh3"),
+"shoot": SubResource("Animation_sn48v")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47kvy"]
+radius = 456.623
+
+[node name="mother" type="CharacterBody2D" groups=["networked"]]
+script = ExtResource("1_cjyn6")
+health = 200
+networked_type = 8
+damage = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_muok8")
+
+[node name="actions" type="Node2D" parent="."]
+
+[node name="action" type="Node2D" parent="actions"]
+script = ExtResource("3_jkv13")
+texture = ExtResource("4_53ofa")
+timer_length = 10.0
+gnome_flesh_cost = 10
+gold_cost = 10
+credits_cost = 10
+
+[node name="make_radar" type="Node2D" parent="actions"]
+script = ExtResource("3_jkv13")
+texture = ExtResource("5_sjh7l")
+gnome_flesh_cost = 25
+gold_cost = 25
+credits_cost = 25
+
+[node name="make_three" type="Node2D" parent="actions"]
+script = ExtResource("3_jkv13")
+ship = ExtResource("4_tp4yi")
+texture = ExtResource("7_ntkr7")
+gnome_flesh_cost = 50
+credits_cost = 10
+
+[node name="make_minor" type="Node2D" parent="actions"]
+script = ExtResource("3_jkv13")
+ship = ExtResource("5_itdhv")
+texture = ExtResource("9_5x75u")
+gnome_flesh_cost = 30
+gold_cost = 30
+credits_cost = 30
+
+[node name="make_four" type="Node2D" parent="actions"]
+script = ExtResource("3_jkv13")
+ship = ExtResource("10_vscu7")
+texture = ExtResource("11_m6c1n")
+gnome_flesh_cost = 50
+gold_cost = 10
+credits_cost = 10
+
+[node name="auto_turret" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("4_0h2ec")]
+position = Vector2(306, -360)
+projectile = ExtResource("5_nd6ii")
+animator = NodePath("AnimationPlayer")
+
+[node name="Gun" type="Sprite2D" parent="auto_turret"]
+texture = ExtResource("6_vqjx5")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="auto_turret2" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("4_0h2ec")]
+position = Vector2(476, 9)
+projectile = ExtResource("5_nd6ii")
+animator = NodePath("AnimationPlayer")
+
+[node name="Gun" type="Sprite2D" parent="auto_turret2"]
+texture = ExtResource("6_vqjx5")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret2"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="auto_turret3" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("4_0h2ec")]
+position = Vector2(194, 427)
+projectile = ExtResource("5_nd6ii")
+animator = NodePath("AnimationPlayer")
+
+[node name="Gun" type="Sprite2D" parent="auto_turret3"]
+texture = ExtResource("6_vqjx5")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret3"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="auto_turret4" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("4_0h2ec")]
+position = Vector2(-6, 723)
+projectile = ExtResource("5_nd6ii")
+animator = NodePath("AnimationPlayer")
+
+[node name="Gun" type="Sprite2D" parent="auto_turret4"]
+texture = ExtResource("6_vqjx5")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret4"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="auto_turret5" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("4_0h2ec")]
+position = Vector2(-6, -742)
+projectile = ExtResource("5_nd6ii")
+animator = NodePath("AnimationPlayer")
+
+[node name="Gun" type="Sprite2D" parent="auto_turret5"]
+texture = ExtResource("6_vqjx5")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret5"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("CircleShape2D_47kvy")
+
+[connection signal="dead" from="." to="." method="_on_dead"]

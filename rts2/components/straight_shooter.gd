@@ -22,8 +22,12 @@ func _physics_process(delta):
 func shoot_ray(target_: Vector2):
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(global_position, target_)
-	query.collision_mask = 1
+	query.collision_mask = 4
 	var result = space_state.intersect_ray(query)
+	if result:
+		return null
+	query.collision_mask = 1
+	result = space_state.intersect_ray(query)
 	if result:
 		return {"obj": result.collider, "pos": result.position}
 	return null
@@ -34,6 +38,7 @@ func shoot():
 	projectile_obj.global_position = global_position
 	projectile_obj.global_rotation = global_rotation
 	projectile_obj.team = team
+	projectile_obj.damage = owner.damage
 	SceneManager.scene_root.add_child(projectile_obj)
 	if animator:
 		animator.play("shoot")

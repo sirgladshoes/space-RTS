@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2rvh8gekqbqw"]
+
+[ext_resource type="Script" path="res://command_manager.gd" id="1_olae3"]
+[ext_resource type="PackedScene" uid="uid://c3sft7tqbtjbw" path="res://units/controllable_units/basic_ship.tscn" id="2_72gs7"]
+[ext_resource type="PackedScene" uid="uid://l6gdmhiolm14" path="res://UI Elements/UI.tscn" id="2_78f1g"]
+[ext_resource type="PackedScene" uid="uid://ddmjrksslsv4e" path="res://units/controllable_units/ship_2.tscn" id="5_df6ft"]
+[ext_resource type="Texture2D" uid="uid://bln3f3hbfn5tk" path="res://art/motherShipTemp.png" id="5_i5hwx"]
+[ext_resource type="PackedScene" uid="uid://cplwbf5yrcjx2" path="res://new/asteroid.tscn" id="5_iph81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p3if"]
+size = Vector2(12629, 661)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27xsa"]
+size = Vector2(10234, 841)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbdm2"]
+size = Vector2(1069, 7027)
+
+[node name="begunga" type="Node2D"]
+
+[node name="Ui" parent="." node_paths=PackedStringArray("commandManager") instance=ExtResource("2_78f1g")]
+commandManager = NodePath("../command_manager")
+
+[node name="command_manager" type="Node2D" parent="."]
+z_index = 6
+position = Vector2(6.10352e-05, 0)
+script = ExtResource("1_olae3")
+
+[node name="controllable_unit" parent="." instance=ExtResource("2_72gs7")]
+position = Vector2(-22, -31)
+
+[node name="controllable_unit2" parent="." instance=ExtResource("2_72gs7")]
+position = Vector2(-31, -116)
+
+[node name="begunga" type="Camera2D" parent="."]
+position = Vector2(7, 7)
+
+[node name="MotherShipTemp" type="Sprite2D" parent="."]
+position = Vector2(-3846, -1572)
+texture = ExtResource("5_i5hwx")
+
+[node name="asteroid" parent="." instance=ExtResource("5_iph81")]
+position = Vector2(73, -114)
+
+[node name="world_boundary" type="StaticBody2D" parent="."]
+collision_layer = 3855
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world_boundary"]
+position = Vector2(63.5, -3033.5)
+shape = SubResource("RectangleShape2D_0p3if")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="world_boundary"]
+position = Vector2(192, 3148.5)
+shape = SubResource("RectangleShape2D_27xsa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="world_boundary"]
+position = Vector2(5344.5, 40.5)
+shape = SubResource("RectangleShape2D_cbdm2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="world_boundary"]
+position = Vector2(-5332, 155)
+shape = SubResource("RectangleShape2D_cbdm2")
+
+[node name="ship2" parent="." instance=ExtResource("5_df6ft")]
+position = Vector2(-1611, 1416)
+
+[node name="ship3" parent="." instance=ExtResource("5_df6ft")]
+position = Vector2(-594, 1297)

@@ -8,6 +8,6 @@ script = ExtResource("1_i4quc")
 projectile = ExtResource("2_d4aiy")
 
 [node name="shoot_timer" type="Timer" parent="."]
-autostart = true
+wait_time = 0.5
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhgdsfsb5agwc"]
+
+[ext_resource type="Script" path="res://units/maker_node.gd" id="1_df38u"]
+[ext_resource type="Texture2D" uid="uid://bqe2ywlkkb6kj" path="res://art/maker_node.png" id="2_ip8kw"]
+[ext_resource type="Shader" path="res://art/radarBlip.gdshader" id="3_ut8ju"]
+[ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="4_kgvjt"]
+[ext_resource type="Script" path="res://units/actions/make_ship.gd" id="5_3tlhy"]
+[ext_resource type="PackedScene" uid="uid://c4tw3qy2afq5c" path="res://units/controllable_units/ship_3.tscn" id="6_bgr7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnsgm"]
+size = Vector2(55, 61)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42563"]
+resource_local_to_scene = true
+shader = ExtResource("3_ut8ju")
+shader_parameter/color = Vector3(0, 1, 0)
+
+[node name="maker_node" type="CharacterBody2D" groups=["networked"]]
+script = ExtResource("1_df38u")
+networked_type = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ip8kw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_gnsgm")
+
+[node name="MiniGuySelect" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_42563")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_kgvjt")
+
+[node name="actions" type="Node2D" parent="."]
+
+[node name="make_fighter" type="Node2D" parent="actions"]
+script = ExtResource("5_3tlhy")
+timer_length = 1.0
+gold_cost = 10
+
+[node name="make_radar" type="Node2D" parent="actions"]
+script = ExtResource("5_3tlhy")
+gold_cost = 10
+
+[node name="make_three" type="Node2D" parent="actions"]
+script = ExtResource("5_3tlhy")
+ship = ExtResource("6_bgr7y")
+gnome_flesh_cost = 50
+credits_cost = 10

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvb2wuhmhubvr"]
+
+[ext_resource type="Script" path="res://units/controllable_unit.gd" id="1_tqxki"]
+[ext_resource type="Shader" path="res://art/radarBlip.gdshader" id="2_pbw37"]
+[ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="3_sy8r7"]
+[ext_resource type="Texture2D" uid="uid://bm6yc636k6nnu" path="res://drive-download-20240529T170724Z-001/ships/RockHopper.png" id="4_13eaj"]
+[ext_resource type="PackedScene" uid="uid://cpdsdbinmwdxu" path="res://components/mining_laser.tscn" id="5_swqlk"]
+[ext_resource type="Script" path="res://units/actions/basic_action.gd" id="6_3nxr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gaek"]
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axwg7"]
+resource_local_to_scene = true
+shader = ExtResource("2_pbw37")
+shader_parameter/color = Vector3(0, 1, 0)
+
+[node name="mining_ship" type="CharacterBody2D" groups=["networked"]]
+script = ExtResource("1_tqxki")
+mining_radius = 300
+networked_type = 10
+damage = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0gaek")
+
+[node name="MiniGuySelect" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_axwg7")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_sy8r7")
+
+[node name="MiniGuy" type="Sprite2D" parent="."]
+z_index = 1
+rotation = 1.5708
+texture = ExtResource("4_13eaj")
+
+[node name="mining_lasers" type="Node2D" parent="."]
+
+[node name="mining_laser" parent="mining_lasers" instance=ExtResource("5_swqlk")]
+position = Vector2(7, -4)
+
+[node name="mining_laser2" parent="mining_lasers" instance=ExtResource("5_swqlk")]
+position = Vector2(7, 4)
+
+[node name="actions" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="actions"]
+script = ExtResource("6_3nxr8")

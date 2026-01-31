@@ -1,0 +1,136 @@
+[gd_scene load_steps=19 format=3 uid="uid://dkdts0mmh737m"]
+
+[ext_resource type="Script" path="res://units/controllable_unit.gd" id="1_t08sm"]
+[ext_resource type="Shader" path="res://art/radarBlip.gdshader" id="2_1obhj"]
+[ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="3_3kav5"]
+[ext_resource type="Texture2D" uid="uid://d2y2w4msko607" path="res://drive-download-20240529T170724Z-001/ships/destroyer.png" id="4_x5veh"]
+[ext_resource type="PackedScene" uid="uid://cttsejy4bo050" path="res://components/straight_shooter.tscn" id="5_4eqas"]
+[ext_resource type="PackedScene" uid="uid://cpdsdbinmwdxu" path="res://components/mining_laser.tscn" id="6_qogjd"]
+[ext_resource type="Script" path="res://units/actions/basic_action.gd" id="7_821ed"]
+[ext_resource type="PackedScene" uid="uid://bt56whqsog3qh" path="res://components/auto_turret.tscn" id="8_ggorv"]
+[ext_resource type="PackedScene" uid="uid://cqmbhlohj66b3" path="res://projectiles/projectile.tscn" id="9_gub1g"]
+[ext_resource type="Texture2D" uid="uid://dcuaa3pmqspee" path="res://art/gun.png" id="10_tfmfq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gaek"]
+size = Vector2(32, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axwg7"]
+resource_local_to_scene = true
+shader = ExtResource("2_1obhj")
+shader_parameter/color = Vector3(0, 1, 0)
+
+[sub_resource type="Animation" id="Animation_72fh3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_sn48v"]
+resource_name = "shoot"
+length = 0.3
+step = 0.05
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0w3fg"]
+_data = {
+"RESET": SubResource("Animation_72fh3"),
+"shoot": SubResource("Animation_sn48v")
+}
+
+[sub_resource type="Animation" id="Animation_je30e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vy0ly"]
+resource_name = "shoot"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce6ng"]
+_data = {
+"RESET": SubResource("Animation_je30e"),
+"shoot": SubResource("Animation_vy0ly")
+}
+
+[node name="ship_4" type="CharacterBody2D" groups=["networked"]]
+script = ExtResource("1_t08sm")
+health = 20
+networked_type = 11
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0gaek")
+
+[node name="MiniGuySelect" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_axwg7")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_3kav5")
+
+[node name="MiniGuy" type="Sprite2D" parent="."]
+z_index = 1
+rotation = 1.5708
+texture = ExtResource("4_x5veh")
+
+[node name="funny_gun" type="Node2D" parent="."]
+
+[node name="straight_shooter" parent="funny_gun" instance=ExtResource("5_4eqas")]
+position = Vector2(-3, -7)
+rotation = -1.5708
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="straight_shooter2" parent="funny_gun" instance=ExtResource("5_4eqas")]
+position = Vector2(-3, 7)
+skew = 1.56905
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter2"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="mining_lasers" type="Node2D" parent="."]
+
+[node name="mining_laser" parent="mining_lasers" instance=ExtResource("6_qogjd")]
+
+[node name="actions" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="actions"]
+script = ExtResource("7_821ed")
+
+[node name="auto_turret" parent="." instance=ExtResource("8_ggorv")]
+z_index = 1
+position = Vector2(6, 0)
+radius = 1000
+shoot_interval = 1.0
+projectile = ExtResource("9_gub1g")
+
+[node name="Gun" type="Sprite2D" parent="auto_turret"]
+texture = ExtResource("10_tfmfq")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret"]
+libraries = {
+"": SubResource("AnimationLibrary_ce6ng")
+}

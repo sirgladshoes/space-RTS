@@ -1,6 +1,7 @@
 extends Area2D
 var velocity = Vector2(0,0)
 var speed = 900
+var damage
 var team
 
 
@@ -14,5 +15,5 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body is unit and body.team != team:
-		body.take_damage(1)
+		body.take_damage(damage)
 		queue_free()

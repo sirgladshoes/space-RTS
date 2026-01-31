@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3sft7tqbtjbw"]
+[gd_scene load_steps=13 format=3 uid="uid://c3sft7tqbtjbw"]
 
-[ext_resource type="Script" path="res://units/controllable_units/basic_ship.gd" id="1_ovw1s"]
+[ext_resource type="Script" path="res://units/controllable_unit.gd" id="1_dyyca"]
 [ext_resource type="Texture2D" uid="uid://bgxds5xnu0nit" path="res://art/mini guy.png" id="2_fypja"]
 [ext_resource type="Shader" path="res://art/radarBlip.gdshader" id="4_prtpc"]
 [ext_resource type="PackedScene" uid="uid://cttsejy4bo050" path="res://components/straight_shooter.tscn" id="5_ophbb"]
 [ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="5_vwhhd"]
 [ext_resource type="PackedScene" uid="uid://cpdsdbinmwdxu" path="res://components/mining_laser.tscn" id="6_g5try"]
+[ext_resource type="Script" path="res://units/actions/basic_action.gd" id="7_2qsfd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gaek"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysesx"]
 size = Vector2(16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_axwg7"]
@@ -29,15 +30,13 @@ _data = {
 "shoot": SubResource("Animation_sn48v")
 }
 
-[node name="controllable_unit" type="CharacterBody2D"]
-script = ExtResource("1_ovw1s")
-max_speed = 300
-thrust_speed = 200
-team = 1
-health = 8
+[node name="controllable_unit" type="CharacterBody2D" groups=["networked"]]
+script = ExtResource("1_dyyca")
+max_speed = 150
+thrust_speed = 150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_0gaek")
+shape = SubResource("RectangleShape2D_ysesx")
 
 [node name="MiniGuySelect" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_axwg7")
@@ -51,18 +50,16 @@ texture = ExtResource("2_fypja")
 
 [node name="funny_gun" type="Node2D" parent="."]
 
-[node name="straight_shooter" parent="funny_gun" node_paths=PackedStringArray("animator") instance=ExtResource("5_ophbb")]
+[node name="straight_shooter" parent="funny_gun" instance=ExtResource("5_ophbb")]
 position = Vector2(0, -9)
-animator = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter"]
 libraries = {
 "": SubResource("AnimationLibrary_0w3fg")
 }
 
-[node name="straight_shooter2" parent="funny_gun" node_paths=PackedStringArray("animator") instance=ExtResource("5_ophbb")]
+[node name="straight_shooter2" parent="funny_gun" instance=ExtResource("5_ophbb")]
 position = Vector2(0, 9)
-animator = NodePath("../straight_shooter/AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter2"]
 libraries = {
@@ -72,3 +69,8 @@ libraries = {
 [node name="mining_lasers" type="Node2D" parent="."]
 
 [node name="mining_laser" parent="mining_lasers" instance=ExtResource("6_g5try")]
+
+[node name="actions" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="actions"]
+script = ExtResource("7_2qsfd")

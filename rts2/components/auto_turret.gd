@@ -48,6 +48,7 @@ func shoot():
 	projectile_obj.global_position = global_position
 	projectile_obj.global_rotation = global_rotation
 	projectile_obj.team = team
+	projectile_obj.damage = owner.damage
 	SceneManager.scene_root.add_child(projectile_obj)
 	if animator:
 		animator.play("shoot")

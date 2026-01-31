@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://l6gdmhiolm14"]
+[gd_scene load_steps=31 format=3 uid="uid://l6gdmhiolm14"]
 
 [ext_resource type="Texture2D" uid="uid://clr881h1wjgkg" path="res://UI Elements/RectangleBorder.png" id="1_157ey"]
 [ext_resource type="Script" path="res://UI Elements/Scripts/CurrenciesUI.gd" id="1_mnewd"]
@@ -7,10 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c083600lcayfv" path="res://UI Elements/Gold.png" id="2_p8erj"]
 [ext_resource type="Texture2D" uid="uid://b0l2dasepmjys" path="res://UI Elements/GnomeFlesh.png" id="3_4aj5x"]
 [ext_resource type="Texture2D" uid="uid://dcfwtctqilpvo" path="res://UI Elements/credit.png" id="4_4su4w"]
-[ext_resource type="Texture2D" uid="uid://1oi4xjrcoils" path="res://UI Elements/smallHorizontalBar.png" id="4_l643b"]
 [ext_resource type="Texture2D" uid="uid://b3aptskbps8ad" path="res://UI Elements/bar.png" id="6_oigrc"]
 [ext_resource type="Texture2D" uid="uid://b23o2tejo3u6c" path="res://UI Elements/ClickedSquareBorder.png" id="7_yuvn0"]
-[ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="8_em0tl"]
 [ext_resource type="Texture2D" uid="uid://vnkmbejqmwju" path="res://UI Elements/pickaxe.png" id="8_qesqi"]
 [ext_resource type="Texture2D" uid="uid://koyxkx0glk87" path="res://UI Elements/sentry.png" id="9_eeouq"]
 [ext_resource type="Script" path="res://UI Elements/Scripts/BehaviorsUI.gd" id="9_xqiog"]
@@ -18,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cidsui4e7w1ws" path="res://UI Elements/yellowHighlight.png" id="11_2ltw6"]
 [ext_resource type="Texture2D" uid="uid://bxmc30lj8g080" path="res://UI Elements/greenHighlight.png" id="12_77fj1"]
 [ext_resource type="Texture2D" uid="uid://d0git8cglstxm" path="res://UI Elements/blackHighlight.png" id="13_qv81g"]
+[ext_resource type="Script" path="res://UI Elements/Scripts/Actions.gd" id="16_1ccrc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_md8jh"]
 texture = ExtResource("1_rk8we")
@@ -27,9 +26,6 @@ texture = ExtResource("2_p8erj")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxfqw"]
 texture = ExtResource("1_157ey")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cfos7"]
-texture = ExtResource("4_l643b")
 
 [sub_resource type="FontFile" id="FontFile_gmrue"]
 subpixel_positioning = 0
@@ -139,9 +135,6 @@ texture = ExtResource("8_qesqi")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ign83"]
 texture = ExtResource("9_eeouq")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a8gjw"]
-texture = ExtResource("8_em0tl")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5io8"]
 texture = ExtResource("11_0dnve")
 
@@ -166,17 +159,14 @@ layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 80.0
 
-[node name="Currencies" type="Control" parent="TopBar/TopPanel" node_paths=PackedStringArray("selectedGoldText", "totalGoldText", "selectedGnomeFleshText", "totalGnomeFleshText", "selectedCreditText", "totalCreditText")]
+[node name="Currencies" type="Control" parent="TopBar/TopPanel" node_paths=PackedStringArray("selectedGoldText", "selectedGnomeFleshText", "selectedCreditText")]
 anchors_preset = 0
 offset_right = 360.0
 offset_bottom = 80.0
 script = ExtResource("1_mnewd")
 selectedGoldText = NodePath("Gold/NumberBackground/SelectedAmount")
-totalGoldText = NodePath("Gold/NumberBackground/TotalAmount")
 selectedGnomeFleshText = NodePath("GnomeFlesh/NumberBackground/SelectedAmount")
-totalGnomeFleshText = NodePath("GnomeFlesh/NumberBackground/TotalAmount")
 selectedCreditText = NodePath("Credit/NumberBackground/SelectedAmount")
-totalCreditText = NodePath("Credit/NumberBackground/TotalAmount")
 
 [node name="Gold" type="Control" parent="TopBar/TopPanel/Currencies"]
 layout_mode = 3
@@ -200,6 +190,13 @@ offset_right = 60.0
 offset_bottom = 60.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_thn4g")
 
+[node name="type" type="Label" parent="TopBar/TopPanel/Currencies/Gold/GoldBackground"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 46.0
+offset_bottom = 23.0
+text = "G"
+
 [node name="NumberBackground" type="Panel" parent="TopBar/TopPanel/Currencies/Gold"]
 layout_mode = 0
 offset_left = 80.0
@@ -208,35 +205,14 @@ offset_right = 120.0
 offset_bottom = 75.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_qxfqw")
 
-[node name="Panel" type="Panel" parent="TopBar/TopPanel/Currencies/Gold/NumberBackground"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 34.0
-offset_right = 30.0
-offset_bottom = 36.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_cfos7")
-
 [node name="SelectedAmount" type="Label" parent="TopBar/TopPanel/Currencies/Gold/NumberBackground"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 15.0
+offset_top = 29.0
 offset_right = 125.0
-offset_bottom = 60.0
+offset_bottom = 74.0
 scale = Vector2(0.25, 0.25)
 text = "Amount"
-label_settings = SubResource("LabelSettings_wste0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TotalAmount" type="Label" parent="TopBar/TopPanel/Currencies/Gold/NumberBackground"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 45.0
-offset_right = 125.0
-offset_bottom = 90.0
-scale = Vector2(0.25, 0.25)
-text = "Total
-"
 label_settings = SubResource("LabelSettings_wste0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -264,6 +240,13 @@ offset_right = 60.0
 offset_bottom = 60.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_50wtb")
 
+[node name="type" type="Label" parent="TopBar/TopPanel/Currencies/GnomeFlesh/GnomeFleshBackground"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 46.0
+offset_bottom = 23.0
+text = "F"
+
 [node name="NumberBackground" type="Panel" parent="TopBar/TopPanel/Currencies/GnomeFlesh"]
 layout_mode = 0
 offset_left = 80.0
@@ -272,35 +255,14 @@ offset_right = 120.0
 offset_bottom = 75.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_qxfqw")
 
-[node name="Panel" type="Panel" parent="TopBar/TopPanel/Currencies/GnomeFlesh/NumberBackground"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 34.0
-offset_right = 30.0
-offset_bottom = 36.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_cfos7")
-
 [node name="SelectedAmount" type="Label" parent="TopBar/TopPanel/Currencies/GnomeFlesh/NumberBackground"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 15.0
+offset_top = 28.0
 offset_right = 125.0
-offset_bottom = 60.0
+offset_bottom = 73.0
 scale = Vector2(0.25, 0.25)
 text = "Amount"
-label_settings = SubResource("LabelSettings_wste0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TotalAmount" type="Label" parent="TopBar/TopPanel/Currencies/GnomeFlesh/NumberBackground"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 45.0
-offset_right = 125.0
-offset_bottom = 90.0
-scale = Vector2(0.25, 0.25)
-text = "Total
-"
 label_settings = SubResource("LabelSettings_wste0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -319,35 +281,14 @@ offset_right = 120.0
 offset_bottom = 75.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_qxfqw")
 
-[node name="Panel" type="Panel" parent="TopBar/TopPanel/Currencies/Credit/NumberBackground"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 34.0
-offset_right = 30.0
-offset_bottom = 36.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_cfos7")
-
 [node name="SelectedAmount" type="Label" parent="TopBar/TopPanel/Currencies/Credit/NumberBackground"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 15.0
+offset_top = 29.0
 offset_right = 125.0
-offset_bottom = 60.0
+offset_bottom = 74.0
 scale = Vector2(0.25, 0.25)
 text = "Amount"
-label_settings = SubResource("LabelSettings_wste0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TotalAmount" type="Label" parent="TopBar/TopPanel/Currencies/Credit/NumberBackground"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 45.0
-offset_right = 125.0
-offset_bottom = 90.0
-scale = Vector2(0.25, 0.25)
-text = "Total
-"
 label_settings = SubResource("LabelSettings_wste0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -367,6 +308,13 @@ offset_top = 10.0
 offset_right = 60.0
 offset_bottom = 60.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_10rj2")
+
+[node name="type" type="Label" parent="TopBar/TopPanel/Currencies/Credit/CreditBackground"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 46.0
+offset_bottom = 23.0
+text = "C"
 
 [node name="Bar1" type="Control" parent="TopBar/TopPanel"]
 anchors_preset = 0
@@ -455,83 +403,7 @@ anchors_preset = 0
 offset_left = 530.0
 offset_right = 770.0
 offset_bottom = 80.0
-
-[node name="MiningButton" type="Control" parent="TopBar/TopPanel/Actions"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 80.0
-offset_bottom = 80.0
-
-[node name="Panel" type="Panel" parent="TopBar/TopPanel/Actions/MiningButton"]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 70.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_a8gjw")
-
-[node name="TextureButton" type="TextureButton" parent="TopBar/TopPanel/Actions/MiningButton"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 75.0
-offset_bottom = 75.0
-texture_normal = ExtResource("1_rk8we")
-texture_pressed = ExtResource("7_yuvn0")
-stretch_mode = 0
-
-[node name="MiningButton2" type="Control" parent="TopBar/TopPanel/Actions"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 80.0
-offset_right = 160.0
-offset_bottom = 80.0
-
-[node name="Panel" type="Panel" parent="TopBar/TopPanel/Actions/MiningButton2"]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 70.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_a8gjw")
-
-[node name="TextureButton" type="TextureButton" parent="TopBar/TopPanel/Actions/MiningButton2"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 75.0
-offset_bottom = 75.0
-texture_normal = ExtResource("1_rk8we")
-texture_pressed = ExtResource("7_yuvn0")
-stretch_mode = 0
-
-[node name="MiningButton3" type="Control" parent="TopBar/TopPanel/Actions"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 160.0
-offset_right = 240.0
-offset_bottom = 80.0
-
-[node name="Panel" type="Panel" parent="TopBar/TopPanel/Actions/MiningButton3"]
-z_index = 1
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 70.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_a8gjw")
-
-[node name="TextureButton" type="TextureButton" parent="TopBar/TopPanel/Actions/MiningButton3"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 75.0
-offset_bottom = 75.0
-texture_normal = ExtResource("1_rk8we")
-texture_pressed = ExtResource("7_yuvn0")
-stretch_mode = 0
+script = ExtResource("16_1ccrc")
 
 [node name="Bar2" type="Control" parent="TopBar/TopPanel"]
 layout_mode = 3

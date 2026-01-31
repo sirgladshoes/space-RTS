@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var ship_behaviors = $TopBar/TopPanel/Behaviors
+@onready var currency = $TopBar/TopPanel/Currencies
+@onready var actions = $TopBar/TopPanel/Actions
 
 signal disable_mining()
 signal disable_sentries()
@@ -8,9 +10,14 @@ signal set_mining()
 signal set_sentry()
 
 func update_toolbar(data):
+	#print(data["currency"])
 	ship_behaviors.update_sentry(data.modes.sentry)
 	ship_behaviors.update_mining(data.modes.mining)
+	currency.update_currency(data.currency)
 	$TopBar/TopPanel/SelectionInfo/SelectedShips.text = str(data.ship_count) + " Ships Selected"
+	if data.has_been_released:
+		actions.delete_children()
+		actions.add_buttons(data.actions)
 
 
 func _on_command_manager_hide_toolbar():

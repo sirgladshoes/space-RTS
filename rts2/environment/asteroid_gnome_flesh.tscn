@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj8366tncnq00"]
+
+[ext_resource type="Script" path="res://environment/asteroid.gd" id="1_sngo7"]
+[ext_resource type="Texture2D" uid="uid://cgthcgqgt7al" path="res://art/asteroid_gnome_flesh.png" id="2_rr35o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_23qqr"]
+radius = 68.2642
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugdrq"]
+radius = 64.0703
+
+[node name="asteroid_gnome_flesh" type="CharacterBody2D" groups=["networked"]]
+collision_layer = 4
+script = ExtResource("1_sngo7")
+resource = 2
+networked_type = 6
+
+[node name="collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="collider"]
+shape = SubResource("CircleShape2D_23qqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ugdrq")
+
+[node name="UnnamedAgain" type="Sprite2D" parent="."]
+texture = ExtResource("2_rr35o")
+
+[connection signal="body_entered" from="collider" to="." method="_on_collider_body_entered"]

@@ -1,0 +1,6 @@
+AudioStreamPlayer
+Label
+CollisionShape2D
+Timer
+Node2D
+Node

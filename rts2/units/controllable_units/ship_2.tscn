@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddmjrksslsv4e"]
+[gd_scene load_steps=15 format=3 uid="uid://ddmjrksslsv4e"]
 
-[ext_resource type="Script" path="res://units/controllable_units/basic_ship.gd" id="1_kfxwx"]
+[ext_resource type="Script" path="res://units/controllable_unit.gd" id="1_71mmy"]
 [ext_resource type="Texture2D" uid="uid://b1m24mq8ig8gk" path="res://art/unnamed.png" id="3_8fdnt"]
 [ext_resource type="Shader" path="res://art/radarBlip.gdshader" id="3_isq3l"]
 [ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="4_0ttqs"]
 [ext_resource type="PackedScene" uid="uid://bt56whqsog3qh" path="res://components/auto_turret.tscn" id="5_8mnah"]
 [ext_resource type="PackedScene" uid="uid://cqmbhlohj66b3" path="res://projectiles/projectile.tscn" id="6_vib3x"]
 [ext_resource type="Texture2D" uid="uid://dcuaa3pmqspee" path="res://art/gun.png" id="7_gv8ht"]
+[ext_resource type="PackedScene" uid="uid://cpdsdbinmwdxu" path="res://components/mining_laser.tscn" id="8_55uml"]
+[ext_resource type="PackedScene" uid="uid://cttsejy4bo050" path="res://components/straight_shooter.tscn" id="9_gplda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dnf6"]
 size = Vector2(123.333, 20)
@@ -16,7 +18,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_isq3l")
 shader_parameter/color = Vector3(0, 1, 0)
 
-[sub_resource type="Animation" id="Animation_72fh3"]
+[sub_resource type="Animation" id="Animation_je30e"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +33,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_sn48v"]
+[sub_resource type="Animation" id="Animation_vy0ly"]
 resource_name = "shoot"
 length = 0.3
 step = 0.05
@@ -48,17 +50,18 @@ tracks/0/keys = {
 "values": [1, 2, 3, 0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0w3fg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce6ng"]
 _data = {
-"RESET": SubResource("Animation_72fh3"),
-"shoot": SubResource("Animation_sn48v")
+"RESET": SubResource("Animation_je30e"),
+"shoot": SubResource("Animation_vy0ly")
 }
 
-[node name="ship2" type="CharacterBody2D"]
+[node name="ship2" type="CharacterBody2D" groups=["networked"]]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_kfxwx")
-max_speed = 150
-thrust_speed = 50
+script = ExtResource("1_71mmy")
+health = 50
+networked_type = 2
+damage = 2
 
 [node name="MiniGuy" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -83,5 +86,17 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="auto_turret"]
 libraries = {
-"": SubResource("AnimationLibrary_0w3fg")
+"": SubResource("AnimationLibrary_ce6ng")
 }
+
+[node name="mining_lasers" type="Node2D" parent="."]
+
+[node name="mining_laser" parent="mining_lasers" instance=ExtResource("8_55uml")]
+
+[node name="funny_gun" type="Node2D" parent="."]
+
+[node name="straight_shooter" parent="funny_gun" instance=ExtResource("9_gplda")]
+position = Vector2(50, 12.6667)
+
+[node name="straight_shooter2" parent="funny_gun" instance=ExtResource("9_gplda")]
+position = Vector2(49.3333, -13.3333)

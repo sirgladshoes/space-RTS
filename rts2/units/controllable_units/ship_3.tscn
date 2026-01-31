@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4tw3qy2afq5c"]
+
+[ext_resource type="Script" path="res://units/controllable_unit.gd" id="1_m6uyk"]
+[ext_resource type="Shader" path="res://art/radarBlip.gdshader" id="2_htxlp"]
+[ext_resource type="Texture2D" uid="uid://dbnvjpnkt27mf" path="res://icon.svg" id="3_0gvcu"]
+[ext_resource type="Texture2D" uid="uid://dlx6nohsxns4q" path="res://drive-download-20240529T170724Z-001/ships/freighter.png" id="4_j0svp"]
+[ext_resource type="PackedScene" uid="uid://cttsejy4bo050" path="res://components/straight_shooter.tscn" id="5_2gysc"]
+[ext_resource type="PackedScene" uid="uid://cpdsdbinmwdxu" path="res://components/mining_laser.tscn" id="6_os4y3"]
+[ext_resource type="Script" path="res://units/actions/basic_action.gd" id="7_tkat8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gaek"]
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axwg7"]
+resource_local_to_scene = true
+shader = ExtResource("2_htxlp")
+shader_parameter/color = Vector3(0, 1, 0)
+
+[sub_resource type="Animation" id="Animation_72fh3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_sn48v"]
+resource_name = "shoot"
+length = 0.3
+step = 0.05
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0w3fg"]
+_data = {
+"RESET": SubResource("Animation_72fh3"),
+"shoot": SubResource("Animation_sn48v")
+}
+
+[node name="ship_3" type="CharacterBody2D" groups=["networked"]]
+script = ExtResource("1_m6uyk")
+health = 15
+networked_type = 9
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0gaek")
+
+[node name="MiniGuySelect" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_axwg7")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0gvcu")
+
+[node name="MiniGuy" type="Sprite2D" parent="."]
+z_index = 1
+rotation = 1.5708
+texture = ExtResource("4_j0svp")
+
+[node name="funny_gun" type="Node2D" parent="."]
+
+[node name="straight_shooter7" parent="funny_gun" instance=ExtResource("5_2gysc")]
+position = Vector2(11, -6)
+distance = 250
+shoot_interval = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter7"]
+root_node = NodePath("../../straight_shooter7")
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="straight_shooter6" parent="funny_gun" instance=ExtResource("5_2gysc")]
+position = Vector2(11, 6)
+distance = 250
+shoot_interval = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter6"]
+root_node = NodePath("../../straight_shooter6")
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="straight_shooter" parent="funny_gun" instance=ExtResource("5_2gysc")]
+position = Vector2(0, -9)
+rotation = -0.436332
+distance = 200
+shoot_interval = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="straight_shooter3" parent="funny_gun" instance=ExtResource("5_2gysc")]
+position = Vector2(-8, -9)
+rotation = -0.436332
+distance = 200
+shoot_interval = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter3"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="straight_shooter2" parent="funny_gun" instance=ExtResource("5_2gysc")]
+position = Vector2(0, 9)
+rotation = 0.436332
+distance = 200
+shoot_interval = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter2"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="straight_shooter4" parent="funny_gun" instance=ExtResource("5_2gysc")]
+position = Vector2(-8, 9)
+rotation = 0.436332
+distance = 200
+shoot_interval = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="funny_gun/straight_shooter4"]
+libraries = {
+"": SubResource("AnimationLibrary_0w3fg")
+}
+
+[node name="mining_lasers" type="Node2D" parent="."]
+
+[node name="mining_laser" parent="mining_lasers" instance=ExtResource("6_os4y3")]
+
+[node name="actions" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="actions"]
+script = ExtResource("7_tkat8")

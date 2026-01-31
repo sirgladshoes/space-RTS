@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var speed = 10
+@export var speed = 200
 var velocity = Vector2(0,0)
 
 

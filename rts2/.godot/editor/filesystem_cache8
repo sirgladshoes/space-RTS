@@ -1,0 +1,142 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1717696065
+camera.gd::GDScript::-1::1716388292::0::1::::<>Camera2D<>::
+client.gd::GDScript::-1::1717695201::0::1::::<>Node2D<>::
+client.tscn::PackedScene::4575055899217406181::1717692683::0::1::::<><>::res://client.gd<>uid://l6gdmhiolm14::::res://UI Elements/UI.tscn<>res://command_manager.gd<>uid://buxv4ti37ibjg::::res://drive-download-20240529T170724Z-001/backgrounds/SpaceBackground.png
+command_manager.gd::GDScript::-1::1717607234::0::1::::<>Node2D<>::
+host.gd::GDScript::-1::1717696165::0::1::::<>Node2D<>::
+host.tscn::PackedScene::8117015312916336190::1717696165::0::1::::<><>::res://host.gd<>uid://l6gdmhiolm14::::res://UI Elements/UI.tscn<>res://command_manager.gd<>uid://c3sft7tqbtjbw::::res://units/controllable_units/basic_ship.tscn<>uid://bj8366tncnq00::::res://environment/asteroid_gnome_flesh.tscn<>uid://yqws2uh1kpfj::::res://environment/asteroid_gold.tscn<>uid://spawyagdix2l::::res://environment/asteroid_currency.tscn<>uid://573sa0ty1ijq::::res://art/john_music.mp3<>uid://buxv4ti37ibjg::::res://drive-download-20240529T170724Z-001/backgrounds/SpaceBackground.png<>uid://dtaxi8qyupagt::::res://units/mother.tscn
+icon.svg::CompressedTexture2D::7257579742926905253::1715706383::1715706403::1::::<><>::
+MotherExplosion.gd::GDScript::-1::1717091850::0::1::::<>Node2D<>::
+network2.gd::GDScript::-1::1717177875::0::1::::<>Node<>::
+lose_screen.tscn::PackedScene::6198744206004464919::1717696065::0::1::::<><>::res://MotherExplosion.gd<>uid://dytmp2gl616r6::::res://drive-download-20240529T170724Z-001/nodes/MotherBroken2.png<>uid://bwlg1qwbi7xd::::res://drive-download-20240529T170724Z-001/nodes/MotherBroken1.png<>uid://cbbv0g6gvv511::::res://drive-download-20240529T170724Z-001/nodes/MotherBroken3.png
+testing_hub.gd::GDScript::-1::1717521653::0::1::::<>Node2D<>::
+testing_hub.tscn::PackedScene::8289182671422701351::1717692684::0::1::::<><>::res://testing_hub.gd
+win_screen.tscn::PackedScene::1082402846415654260::1717696065::0::1::::<><>::uid://dytmp2gl616r6::::res://drive-download-20240529T170724Z-001/nodes/MotherBroken2.png<>res://MotherExplosion.gd<>uid://bwlg1qwbi7xd::::res://drive-download-20240529T170724Z-001/nodes/MotherBroken1.png<>uid://cbbv0g6gvv511::::res://drive-download-20240529T170724Z-001/nodes/MotherBroken3.png
+::res://art/::1717695881
+asteroid_currency.png::CompressedTexture2D::2573731615262369850::1715968272::1716312533::1::::<><>::
+asteroid_gnome_flesh.png::CompressedTexture2D::153930192271615875::1715968294::1716312533::1::::<><>::
+asteroid_gold.png::CompressedTexture2D::5862915688545060936::1715968281::1716312533::1::::<><>::
+gun.png::CompressedTexture2D::7340928787829765144::1715706383::1715706403::1::::<><>::
+john_music.mp3::AudioStreamMP3::2173457656875120466::1715965225::1717696131::1::::<><>::
+laser.png::CompressedTexture2D::1802230991883085264::1715706383::1715706403::1::::<><>::
+live-slug-reaction.jpg::CompressedTexture2D::5478887731947678870::1715884138::1715956156::1::::<><>::
+maker_node.png::CompressedTexture2D::3519383083750615169::1716486130::1716486132::1::::<><>::
+menu_music_main.mp3::AudioStreamMP3::4931957999611130349::1717695855::1717696196::1::::<><>::
+mini guy.png::CompressedTexture2D::2855250340982648767::1715706383::1715706403::1::::<><>::
+mini guy_select.png::CompressedTexture2D::716749454910328840::1715706383::1715706403::1::::<><>::
+motherShipTemp.png::CompressedTexture2D::3187045360801318176::1715706383::1715706403::1::::<><>::
+radarBlip.gdshader::Shader::-1::1715706383::0::1::::<><>::
+unnamed (1).png::CompressedTexture2D::645597560627940439::1715706383::1715706403::1::::<><>::
+unnamed (2).png::CompressedTexture2D::37294329459695848::1715706383::1715706403::1::::<><>::
+unnamed (3).png::CompressedTexture2D::4342206968311753531::1715706383::1715706403::1::::<><>::
+unnamed again.png::CompressedTexture2D::3388018626284664199::1715707875::1715707878::1::::<><>::
+unnamed.png::CompressedTexture2D::4237794954666003114::1715706383::1715706403::1::::<><>::
+yum.png::CompressedTexture2D::8236280733097877344::1715884038::1715956156::1::::<><>::
+::res://autoload/::1717695144
+globals.gd::GDScript::-1::1715706383::0::1::::<>Node<>::
+scene_manager.gd::GDScript::-1::1717695144::0::1::::<>Node<>::
+::res://components/::1717694781
+auto_turret.gd::GDScript::-1::1717692635::0::1::::<>Node2D<>::
+auto_turret.tscn::PackedScene::3783861952896314471::1717692684::0::1::::<><>::res://components/auto_turret.gd
+freighter.png::CompressedTexture2D::913831619482181688::1717608747::1717608747::1::::<><>::
+mining_laser.gd::GDScript::-1::1717694781::0::1::::<>Node2D<>::
+mining_laser.tscn::PackedScene::5832965483959729214::1716312479::0::1::::<><>::res://components/mining_laser.gd
+straight_shooter.gd::GDScript::-1::1717609851::0::1::::<>Node2D<>::
+straight_shooter.tscn::PackedScene::6146753133986370201::1717609857::0::1::::<><>::res://components/straight_shooter.gd<>uid://cqmbhlohj66b3::::res://projectiles/projectile.tscn
+::res://drive-download-20240529T170724Z-001/::1717522025
+::res://drive-download-20240529T170724Z-001/backgrounds/::1717522024
+SpaceBackground.png::CompressedTexture2D::3839006101285819900::1717002474::1717177072::1::::<><>::
+::res://drive-download-20240529T170724Z-001/nodes/::1717522025
+FuelDepot.png::CompressedTexture2D::2832163723752957172::1717002474::1717177072::1::::<><>::
+MakerTierOne.png::CompressedTexture2D::79319592840993576::1717002474::1717177072::1::::<><>::
+Miner.png::CompressedTexture2D::5395326081807947477::1717002474::1717177072::1::::<><>::
+Mother.png::CompressedTexture2D::8987156194568948967::1717002873::1717177072::1::::<><>::
+MotherBroken1.png::CompressedTexture2D::116285147236450209::1717006088::1717177072::1::::<><>::
+MotherBroken2.png::CompressedTexture2D::8883774294482541949::1717006081::1717177072::1::::<><>::
+MotherBroken3.png::CompressedTexture2D::4846414653804586750::1717005914::1717177072::1::::<><>::
+Radar.png::CompressedTexture2D::5343519023718088463::1717002474::1717177072::1::::<><>::
+::res://drive-download-20240529T170724Z-001/ships/::1717522025
+BattleCruiser.png::CompressedTexture2D::158398194579570394::1717002474::1717177072::1::::<><>::
+CommandShip(1).png::CompressedTexture2D::873256537986279655::1717002474::1717177072::1::::<><>::
+CommandShip.png::CompressedTexture2D::1229432308768347585::1717002474::1717177072::1::::<><>::
+destroyer.png::CompressedTexture2D::9105586084220809534::1717002474::1717177072::1::::<><>::
+freighter.png::CompressedTexture2D::7980726208527197322::1717003130::1717177072::1::::<><>::
+RadarShip.png::CompressedTexture2D::2868532742173048246::1717002474::1717177072::1::::<><>::
+RockHopper.png::CompressedTexture2D::3294144970041021178::1717002474::1717177072::1::::<><>::
+Skiff.png::CompressedTexture2D::8941371534078653544::1717002474::1717177072::1::::<><>::
+::res://drive-download-20240529T170724Z-001/space debris/::1717522025
+BigAsteroid.png::CompressedTexture2D::3377547052900548513::1717002958::1717177072::1::::<><>::
+BigAsteroidCredits (1) (1).png::CompressedTexture2D::5302593307569381654::1717002905::1717177072::1::::<><>::
+BigAsteroidGnomeFlesh (1).png::CompressedTexture2D::5101075566591142809::1717002921::1717177072::1::::<><>::
+BigAsteroidGold (1).png::CompressedTexture2D::4366455566685115890::1717002913::1717177072::1::::<><>::
+SmallAsteroid.png::CompressedTexture2D::5033748910036367006::1717002962::1717177072::1::::<><>::
+SmallAsteroidCredits.png::CompressedTexture2D::6527071461652948704::1717002979::1717177072::1::::<><>::
+SmallAsteroidGnomeFlesh.png::CompressedTexture2D::8760437809679444958::1717002973::1717177072::1::::<><>::
+SmallAsteroidGold.png::CompressedTexture2D::1778130857945136610::1717002968::1717177072::1::::<><>::
+::res://drive-download-20240529T170724Z-001/UI/::1717522025
+bar.png::CompressedTexture2D::726692220505752020::1717002474::1717177072::1::::<><>::
+blackHighlight.png::CompressedTexture2D::6210036439077205076::1717002474::1717177072::1::::<><>::
+ClickedSquareBorder.png::CompressedTexture2D::1441935818098113893::1717002474::1717177072::1::::<><>::
+credit.png::CompressedTexture2D::3321051693267595594::1717002474::1717177072::1::::<><>::
+GnomeFlesh.png::CompressedTexture2D::3672632170204518213::1717002474::1717177072::1::::<><>::
+Gold.png::CompressedTexture2D::5393663689428822876::1717002474::1717177072::1::::<><>::
+greenHighlight.png::CompressedTexture2D::8976849496007358363::1717002474::1717177072::1::::<><>::
+largeRectangleBorder.png::CompressedTexture2D::7935583574776966498::1717002474::1717177072::1::::<><>::
+pickaxe.png::CompressedTexture2D::5436354974372151883::1717002474::1717177072::1::::<><>::
+RectangleBorder.png::CompressedTexture2D::4783815842991523919::1717002474::1717177072::1::::<><>::
+sentry.png::CompressedTexture2D::4989950920230573607::1717002474::1717177072::1::::<><>::
+smallHorizontalBar.png::CompressedTexture2D::3855292397420650016::1717002474::1717177072::1::::<><>::
+squareBorder.png::CompressedTexture2D::8260031311568011691::1717002474::1717177072::1::::<><>::
+yellowHighlight.png::CompressedTexture2D::5897526841394909588::1717002474::1717177072::1::::<><>::
+::res://environment/::1717692684
+asteroid.gd::GDScript::-1::1716561956::0::1::::asteroid<>CharacterBody2D<>::
+asteroid.tscn::PackedScene::5849720046960253421::1717692684::0::1::::<><>::res://environment/asteroid.gd<>uid://bojgf3tuyo008::::res://art/unnamed again.png
+asteroid_currency.tscn::PackedScene::1294405400098754221::1716918548::0::1::::<><>::res://environment/asteroid.gd<>uid://bcwy8peoj1pgs::::res://art/asteroid_currency.png
+asteroid_gnome_flesh.tscn::PackedScene::3088001835896879763::1716918548::0::1::::<><>::res://environment/asteroid.gd<>uid://cgthcgqgt7al::::res://art/asteroid_gnome_flesh.png
+asteroid_gold.tscn::PackedScene::1718931658888629439::1716918548::0::1::::<><>::res://environment/asteroid.gd<>uid://cpsbmnynttoe7::::res://art/asteroid_gold.png
+::res://projectiles/::1717610319
+projectile.gd::GDScript::-1::1717607019::0::1::::<>Area2D<>::
+projectile.tscn::PackedScene::5920709215908981026::1717610319::0::1::::<><>::res://projectiles/projectile.gd<>uid://0xaqmghoqhsq::::res://art/laser.png
+::res://UI Elements/::1717696065
+ActionButton.tscn::PackedScene::9137023378970631439::1717610319::0::1::::<><>::res://UI Elements/Scripts/ActionButton.gd<>uid://cqcvy47i656og::::res://UI Elements/squareBorder.png<>uid://b23o2tejo3u6c::::res://UI Elements/ClickedSquareBorder.png<>uid://d0git8cglstxm::::res://UI Elements/blackHighlight.png
+bar.png::CompressedTexture2D::4352653951468270631::1715879473::1715879587::1::::<><>::
+blackHighlight.png::CompressedTexture2D::8926890811229002214::1715879473::1715879587::1::::<><>::
+ClickedSquareBorder.png::CompressedTexture2D::4340221297919434448::1715879473::1715879587::1::::<><>::
+credit.png::CompressedTexture2D::7311331466186814124::1715879473::1715879587::1::::<><>::
+GnomeFlesh.png::CompressedTexture2D::4165494674133726518::1715879473::1715879587::1::::<><>::
+Gold.png::CompressedTexture2D::6597443711835851359::1715879473::1715879587::1::::<><>::
+greenHighlight.png::CompressedTexture2D::4025709387161319167::1715879474::1715879587::1::::<><>::
+largeRectangleBorder.png::CompressedTexture2D::8755930847651270117::1715879474::1715879587::1::::<><>::
+pickaxe.png::CompressedTexture2D::1501431285789345950::1715879474::1715879587::1::::<><>::
+RectangleBorder.png::CompressedTexture2D::5582077038815545498::1715879473::1715879587::1::::<><>::
+sentry.png::CompressedTexture2D::732288567931720130::1715879474::1715879587::1::::<><>::
+smallHorizontalBar.png::CompressedTexture2D::1854349969826980376::1715879474::1715879587::1::::<><>::
+squareBorder.png::CompressedTexture2D::5901311110021673790::1715879474::1715879587::1::::<><>::
+UI.tscn::PackedScene::836443291208994617::1717696065::0::1::::<><>::uid://clr881h1wjgkg::::res://UI Elements/RectangleBorder.png<>res://UI Elements/Scripts/CurrenciesUI.gd<>uid://cqcvy47i656og::::res://UI Elements/squareBorder.png<>res://UI Elements/Scripts/UI.gd<>uid://c083600lcayfv::::res://UI Elements/Gold.png<>uid://b0l2dasepmjys::::res://UI Elements/GnomeFlesh.png<>uid://dcfwtctqilpvo::::res://UI Elements/credit.png<>uid://b3aptskbps8ad::::res://UI Elements/bar.png<>uid://b23o2tejo3u6c::::res://UI Elements/ClickedSquareBorder.png<>uid://vnkmbejqmwju::::res://UI Elements/pickaxe.png<>uid://koyxkx0glk87::::res://UI Elements/sentry.png<>res://UI Elements/Scripts/BehaviorsUI.gd<>uid://dw0o5wqqh0ep6::::res://UI Elements/largeRectangleBorder.png<>uid://cidsui4e7w1ws::::res://UI Elements/yellowHighlight.png<>uid://bxmc30lj8g080::::res://UI Elements/greenHighlight.png<>uid://d0git8cglstxm::::res://UI Elements/blackHighlight.png<>res://UI Elements/Scripts/Actions.gd
+yellowHighlight.png::CompressedTexture2D::5341674336712063958::1715879474::1715879587::1::::<><>::
+::res://UI Elements/Scripts/::1717522025
+ActionButton.gd::GDScript::-1::1716484538::0::1::::<>Control<>::
+Actions.gd::GDScript::-1::1716483336::0::1::::<>Control<>::
+BehaviorsUI.gd::GDScript::-1::1717436339::0::1::::<>Control<>::
+CurrenciesUI.gd::GDScript::-1::1717437323::0::1::::<>Control<>::
+UI.gd::GDScript::-1::1716400912::0::1::::<>CanvasLayer<>::
+::res://units/::1717696065
+controllable_unit.gd::GDScript::-1::1717606056::0::1::::controllable_unit<>unit<>::
+maker_node.gd::GDScript::-1::1716917826::0::1::::<>unit<>::
+maker_node.tscn::PackedScene::7663184808847239430::1717692683::0::1::::<><>::res://units/maker_node.gd<>uid://bqe2ywlkkb6kj::::res://art/maker_node.png<>res://art/radarBlip.gdshader<>uid://dbnvjpnkt27mf::::res://icon.svg<>res://units/actions/make_ship.gd<>uid://c4tw3qy2afq5c::::res://units/controllable_units/ship_3.tscn
+mother.gd::GDScript::-1::1717178440::0::1::::<>unit<>::
+mother.tscn::PackedScene::8494262616491978391::1717696065::0::1::::<><>::res://units/mother.gd<>uid://d1bpfc2lwc5vv::::res://drive-download-20240529T170724Z-001/nodes/Mother.png<>res://units/actions/make_ship.gd<>uid://bt56whqsog3qh::::res://components/auto_turret.tscn<>uid://bgxds5xnu0nit::::res://art/mini guy.png<>uid://c4tw3qy2afq5c::::res://units/controllable_units/ship_3.tscn<>uid://bvb2wuhmhubvr::::res://units/controllable_units/mining_ship.tscn<>uid://cqmbhlohj66b3::::res://projectiles/projectile.tscn<>uid://b1m24mq8ig8gk::::res://art/unnamed.png<>uid://dcuaa3pmqspee::::res://art/gun.png<>uid://dlx6nohsxns4q::::res://drive-download-20240529T170724Z-001/ships/freighter.png<>uid://bm6yc636k6nnu::::res://drive-download-20240529T170724Z-001/ships/RockHopper.png<>uid://dkdts0mmh737m::::res://units/controllable_units/ship_4.tscn<>uid://d2y2w4msko607::::res://drive-download-20240529T170724Z-001/ships/destroyer.png
+target.gd::GDScript::-1::1715706384::0::1::::<>Node2D<>::
+unit.gd::GDScript::-1::1717693863::0::1::::unit<>CharacterBody2D<>::
+::res://units/actions/::1717522025
+action.gd::GDScript::-1::1717436027::0::1::::action<>Node<>::
+basic_action2.gd::GDScript::-1::1716400394::0::1::::<>action<>::
+basic_action.gd::GDScript::-1::1716485166::0::1::::<>action<>::
+make_ship.gd::GDScript::-1::1717437603::0::1::::<>action<>::
+::res://units/controllable_units/::1717696065
+basic_ship.tscn::PackedScene::6775627014699759044::1717696065::0::1::::<><>::res://units/controllable_unit.gd<>uid://bgxds5xnu0nit::::res://art/mini guy.png<>res://art/radarBlip.gdshader<>uid://cttsejy4bo050::::res://components/straight_shooter.tscn<>uid://dbnvjpnkt27mf::::res://icon.svg<>uid://cpdsdbinmwdxu::::res://components/mining_laser.tscn<>res://units/actions/basic_action.gd
+mining_ship.tscn::PackedScene::3864130485952444335::1717696065::0::1::::<><>::res://units/controllable_unit.gd<>res://art/radarBlip.gdshader<>uid://dbnvjpnkt27mf::::res://icon.svg<>uid://bm6yc636k6nnu::::res://drive-download-20240529T170724Z-001/ships/RockHopper.png<>uid://cpdsdbinmwdxu::::res://components/mining_laser.tscn<>res://units/actions/basic_action.gd
+ship_2.tscn::PackedScene::7395178480346650034::1717696065::0::1::::<><>::res://units/controllable_unit.gd<>uid://b1m24mq8ig8gk::::res://art/unnamed.png<>res://art/radarBlip.gdshader<>uid://dbnvjpnkt27mf::::res://icon.svg<>uid://bt56whqsog3qh::::res://components/auto_turret.tscn<>uid://cqmbhlohj66b3::::res://projectiles/projectile.tscn<>uid://dcuaa3pmqspee::::res://art/gun.png<>uid://cpdsdbinmwdxu::::res://components/mining_laser.tscn<>uid://cttsejy4bo050::::res://components/straight_shooter.tscn
+ship_3.tscn::PackedScene::6848927664962357062::1717696065::0::1::::<><>::res://units/controllable_unit.gd<>res://art/radarBlip.gdshader<>uid://dbnvjpnkt27mf::::res://icon.svg<>uid://dlx6nohsxns4q::::res://drive-download-20240529T170724Z-001/ships/freighter.png<>uid://cttsejy4bo050::::res://components/straight_shooter.tscn<>uid://cpdsdbinmwdxu::::res://components/mining_laser.tscn<>res://units/actions/basic_action.gd
+ship_4.tscn::PackedScene::7868530720051934508::1717696065::0::1::::<><>::res://units/controllable_unit.gd<>res://art/radarBlip.gdshader<>uid://dbnvjpnkt27mf::::res://icon.svg<>uid://d2y2w4msko607::::res://drive-download-20240529T170724Z-001/ships/destroyer.png<>uid://cttsejy4bo050::::res://components/straight_shooter.tscn<>uid://cpdsdbinmwdxu::::res://components/mining_laser.tscn<>res://units/actions/basic_action.gd<>uid://bt56whqsog3qh::::res://components/auto_turret.tscn<>uid://cqmbhlohj66b3::::res://projectiles/projectile.tscn<>uid://dcuaa3pmqspee::::res://art/gun.png

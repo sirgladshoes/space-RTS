@@ -10,7 +10,7 @@ var target_vel = Vector2.ZERO
 enum behaviour {
 	SENTRY, MINING, NORMAL
 }
-@export var mode = behaviour.NORMAL
+var mode
 
 
 
@@ -20,7 +20,11 @@ func set_movement_dir(dir):
 		target_vel = dir*max_speed
 
 func _ready():
-	set_mode(mode)
+	if team != SceneManager.scene_root.team:
+		$MiniGuySelect.material.set_shader_parameter("color", Vector3(1,0,0))
+	set_mode(behaviour.NORMAL)
+	disable_mining()
+	actions = get_action_nodes()
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(target_vel, thrust_speed*delta)
@@ -32,8 +36,6 @@ func _physics_process(delta):
 		behaviour.SENTRY:
 			sentry_mode(delta)
 	move_and_slide()
-	if Input.is_action_just_pressed("temp"):
-		set_mode(behaviour.MINING)
 
 func normal_mode(delta):
 	if velocity != target_vel:
@@ -43,13 +45,15 @@ func mining_mode(delta):
 	var result = circle_cast(mining_lock_radius, global_position, 4)
 	if result:
 		var target = result[0]["collider"]
-		var angle_sum = 0
-		var angle_dir = 0
-		if has_node("mining_lasers"):
-			for laser in get_node("mining_lasers").get_children():
-				angle_sum+=laser.rotation
-			angle_dir = angle_sum/get_node("mining_lasers").get_children().size()
-		rotation = rotate_toward(rotation, (target.global_position - global_position).angle()-angle_dir, thrust_speed/15*delta)
+		if target is asteroid and target.resource != 3:
+			var angle_sum = 0
+			var angle_dir = 0
+			#print(target.resource)
+			if has_node("mining_lasers"):
+				for laser in get_node("mining_lasers").get_children():
+					angle_sum+=laser.rotation
+				angle_dir = angle_sum/get_node("mining_lasers").get_children().size()
+			rotation = rotate_toward(rotation, (target.global_position - global_position).angle()-angle_dir, thrust_speed/15*delta)
 
 func sentry_mode(delta):
 	var result = circle_cast(sentry_lock_radius, global_position, 1)
@@ -64,21 +68,22 @@ func sentry_mode(delta):
 		rotation = rotate_toward(rotation, (target.global_position - global_position).angle()-angle_dir, thrust_speed/15*delta)
 
 func set_mode(mode_):
-	match mode_:
-		behaviour.NORMAL:
-			disable_mining()
-		behaviour.SENTRY:
-			disable_mining()
-			set_sentry_mode()
-		behaviour.MINING:
-			set_mining_mode()
-	mode = mode_
+	if mode != mode_:
+		match mode_:
+			behaviour.NORMAL:
+				disable_mining()
+			behaviour.SENTRY:
+				disable_mining()
+				set_sentry_mode()
+			behaviour.MINING:
+				set_mining_mode()
+		mode = mode_
 
 func set_sentry_mode():
 	set_movement_dir(Vector2(0,0))
 
 func custom_sort(a, b):
-	return global_position.direction_to(a.collider.global_position) < global_position.direction_to(b.collider.global_position)
+	return global_position.direction_to(a.collider.global_position) > global_position.direction_to(b.collider.global_position)
 
 func sentry_get_target(targets):
 	for target in targets:

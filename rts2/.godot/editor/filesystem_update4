@@ -1,0 +1,21 @@
+res://host.tscn
+res://UI Elements/UI.tscn
+res://units/controllable_units/basic_ship.tscn
+res://units/maker_node.tscn
+res://client.tscn
+res://units/controllable_units/ship_2.tscn
+res://units/mother.tscn
+res://environment/asteroid.tscn
+res://win_screen.tscn
+res://testing_hub.tscn
+res://units/controllable_units/ship_4.tscn
+res://components/auto_turret.tscn
+res://components/auto_turret.gd
+res://units/controllable_units/mining_ship.tscn
+res://units/controllable_units/ship_3.tscn
+res://units/unit.gd
+res://components/mining_laser.gd
+res://autoload/scene_manager.gd
+res://client.gd
+res://lose_screen.tscn
+res://host.gd

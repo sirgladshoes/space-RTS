@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://polatl6rewvc"]
+
+[ext_resource type="Texture2D" uid="uid://dytmp2gl616r6" path="res://drive-download-20240529T170724Z-001/nodes/MotherBroken2.png" id="1_k6mru"]
+[ext_resource type="Script" path="res://MotherExplosion.gd" id="1_nm14m"]
+[ext_resource type="Texture2D" uid="uid://bwlg1qwbi7xd" path="res://drive-download-20240529T170724Z-001/nodes/MotherBroken1.png" id="2_3lt3p"]
+[ext_resource type="Texture2D" uid="uid://cbbv0g6gvv511" path="res://drive-download-20240529T170724Z-001/nodes/MotherBroken3.png" id="3_yr2pg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbo8h"]
+font_size = 69
+
+[node name="WinScreen" type="Node2D"]
+
+[node name="Mother" type="Node2D" parent="."]
+script = ExtResource("1_nm14m")
+
+[node name="MotherBroken" type="RigidBody2D" parent="Mother"]
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="MotherBroken2" type="Sprite2D" parent="Mother/MotherBroken"]
+texture = ExtResource("1_k6mru")
+
+[node name="center" type="Node2D" parent="Mother/MotherBroken"]
+position = Vector2(-62, -213)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mother/MotherBroken"]
+polygon = PackedVector2Array(198, -403, 123, -266, 29, -183, 37, -27, -66, 61, -203, -70, -229, -224, -355, -276, -275, -357, -230, -386, -149, -424, -90, -442, 7, -450, 112, -438)
+one_way_collision = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Mother"]
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="MotherBroken1" type="Sprite2D" parent="Mother/RigidBody2D"]
+texture = ExtResource("2_3lt3p")
+
+[node name="center" type="Node2D" parent="Mother/RigidBody2D"]
+position = Vector2(-246, 143)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mother/RigidBody2D"]
+polygon = PackedVector2Array(-356, -276, -254, -233, -230, -222, -223, -172, -201, -71, -66, 70, -21, 128, -25, 255, 43, 448, -101, 442, -249, 376, -390, 230, -441, 59, -439, -110)
+one_way_collision = true
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Mother"]
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="MotherBroken3" type="Sprite2D" parent="Mother/RigidBody2D2"]
+texture = ExtResource("3_yr2pg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mother/RigidBody2D2"]
+polygon = PackedVector2Array(44, 448, -23, 255, -20, 127, -66, 66, 40, -22, 31, -182, 125, -264, 185, -356, 200, -401, 256, -373, 296, -335, 349, -289, 373, -248, 407, -193, 434, -124, 447, 61, 375, 252, 273, 358, 130, 432)
+one_way_collision = true
+
+[node name="center" type="Node2D" parent="Mother/RigidBody2D2"]
+position = Vector2(227, 131)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1232.0
+offset_top = -588.0
+offset_right = 4641.0
+offset_bottom = -15.0
+text = "YOU WIN!!!! TAKE A BREAK FATTY ;D"
+label_settings = SubResource("LabelSettings_kbo8h")
